@@ -23,10 +23,9 @@ exclude = [
 
 [dependencies]
 anyhow = "1.0.97"
-bio = "2.2.0"
 bzip2 = "0.6.0"
 chrono = "0.4.40"
-clap = { version = "4.5.32", features = ["derive", "wrap_help"] }
+clap = { version = "4.5.40", features = ["derive", "wrap_help"] }
 clap-verbosity-flag = "3.0.2"
 colored = "3.0.0"
 crossbeam = { version = "0.8.4", features = ["crossbeam-channel"] }
