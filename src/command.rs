@@ -35,7 +35,8 @@ Compression level:
   format   range   default   crate
   gzip     1-9     6         https://crates.io/crates/flate2
   bzip2    1-9     6         https://crates.io/crates/bzip2
-  xz       1-9     6         https://crates.io/crates/xz2"
+  xz       1-9     6         https://crates.io/crates/xz2
+  zstd     1-4     2         roughly equals to zstd 1, 3, 7, 11, respectively"
 )]
 #[command(help_template = "{name} -- {about}\n\nVersion: {version}\
     \n\nAuthors: {author} <mmtinfo@163.com>\
@@ -50,14 +51,14 @@ pub struct Args {
     #[arg(short = '@', long = "threads", default_value_t = 4, global = true, value_name = "INT", help_heading = Some("Global Arguments"))]
     pub threads: usize,
 
-    /// set gzip/bzip2/xz compression level 1 (compress faster) - 9 (compress better) for gzip/bzip2/xz output file, just work with option -o/--out
+    /// set gzip/bzip2/xz/zstd compression level 1 (compress faster) - 9 (compress better) for output file, just work with option -o/--out
     #[arg(long = "compress-level", default_value_t = 6, global = true,
         value_parser = value_parser!(u32).range(1..=9), value_name = "INT", help_heading = Some("Global Arguments")
     )]
     pub compression_level: u32,
 
-    /// output type for stdout: 'g' gzip; 'b' bzip2; 'x' xz; 'u' uncompressed txt format
-    #[arg(long = "output-type", global = true, help_heading = Some("Global Arguments"), value_name = "u|g|b|x", default_value_t = 'u')]
+    /// output type for stdout: 'g' gzip; 'b' bzip2; 'x' xz; 'z' zstd; 'u' uncompressed txt format
+    #[arg(long = "output-type", global = true, help_heading = Some("Global Arguments"), value_name = "u|g|b|x|z", default_value_t = 'u')]
     pub stdout_type: char,
 
     /// if file name specified, write log message to this file, or write to stderr

@@ -2,7 +2,7 @@
 
 [package]
 name = "fqkit"
-version = "0.4.13"
+version = "0.4.14"
 edition = "2024"
 authors = ["sharkLoc <mmtinfo@163.com>"]
 rust-version = "1.85.0"
@@ -47,6 +47,7 @@ term_size = "0.3.2"
 textplots = "0.8.7"
 thiserror = "2.0.12"
 xz2 = "0.1.7"
+zstd = "0.13.3"
 
 
 [profile.release]
