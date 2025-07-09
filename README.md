@@ -43,9 +43,9 @@ cargo install --git https://github.com/sharkLoc/fqkit.git
 ```bash
 FqKit -- A simple and cross-platform program for fastq file manipulation
 
-Version: 0.4.13
+Version: 0.4.14
 
-Authors: sharkLoc <mmtinfo@163.com>
+Authors: sharkLoc <mmtinfo@163.com> <mmtinfo@163.com>
 Source code: https://github.com/sharkLoc/fqkit.git
 
 Fqkit supports reading and writing gzip (.gz) format.
@@ -58,9 +58,10 @@ Compression level:
   gzip     1-9     6         https://crates.io/crates/flate2
   bzip2    1-9     6         https://crates.io/crates/bzip2
   xz       1-9     6         https://crates.io/crates/xz2
+  zstd     1-4     2         roughly equals to zstd 1, 3, 7, 11, respectively
 
 
-Usage: fqkit [OPTIONS] <COMMAND>
+Usage: fqkit.exe [OPTIONS] <COMMAND>
 
 Commands:
   topn     get first N records from fastq file [aliases: head]
@@ -87,24 +88,24 @@ Commands:
   fqscore  converts the fastq file quality scores
   flatten  flatten fastq sequences [aliases: flat]
   barcode  perform demultiplex for pair-end fastq reads [aliases: demux]
-  remove   remove reads by read name
-  rename   rename sequence id in fastq file
+  remove   remove reads by read name [aliases: rm]
+  rename   rename sequence id in fastq file [aliases: rn]
   reverse  get a reverse-complement of fastq file [aliases: rev]
   split    split interleaved fastq file
   merge    merge PE reads as interleaved fastq file
   mask     convert any low quality base to 'N' or other chars
   split2   split fastq file by records number
-  gcplot   get GC content result and plot
+  gcplot   get GC content result and plot [aliases: gc]
   length   get reads length count [aliases: len]
   view     view fastq file page by page
   help     Print this message or the help of the given subcommand(s)
 
 Global Arguments:
-  -@, --threads <INT>          threads number [default: 4]
-      --compress-level <INT>  set gzip/bzip2/xz compression level 1 (compress faster) - 9 (compress better) for gzip/bzip2/xz output file, just work with option -o/--out [default: 6]
-      --output-type <u|g|b|x>  output type for stdout: 'g' gzip; 'b' bzip2; 'x' xz; 'u' uncompressed txt format [default: u]
-      --log <FILE>            if file name specified, write log message to this file, or write to stderr
-  -v, --verbosity...          control verbosity of logging, [-v: Error, -vv: Warn, -vvv: Info, -vvvv: Debug, -vvvvv: Trace, defalut: Debug]
+  -@, --threads <INT>            threads number [default: 4]
+      --compress-level <INT>     set gzip/bzip2/xz/zstd compression level 1 (compress faster) - 9 (compress better) for output file, just work with option -o/--out [default: 6]
+      --output-type <u|g|b|x|z>  output type for stdout: 'g' gzip; 'b' bzip2; 'x' xz; 'z' zstd; 'u' uncompressed txt format [default: u]
+      --log <FILE>               if file name specified, write log message to this file, or write to stderr
+  -v, --verbosity...             control verbosity of logging, [-v: Error, -vv: Warn, -vvv: Info, -vvvv: Debug, -vvvvv: Trace, defalut: Debug]
 
 Global FLAGS:
   -q, --quiet    be quiet and do not show any extra information
