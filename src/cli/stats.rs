@@ -236,7 +236,6 @@ impl ParallelProcessor for Info {
     }
 
     fn on_batch_complete(&mut self) -> Result<(), ProcessError> {
-
         *self.total_num_a.lock() += self.num_a;
         *self.total_num_t.lock() += self.num_t;
         *self.total_num_g.lock() += self.num_g;

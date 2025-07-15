@@ -166,14 +166,13 @@ where
                 2 => 3,
                 3 => 7,
                 4 => 11,
-                _ => 3
+                _ => 3,
             };
             Ok(Box::new(BufWriter::with_capacity(
                 BUFF_SIZE,
                 zstd::stream::write::Encoder::new(fp, level)?,
             )))
-        }
-        else {
+        } else {
             Ok(Box::new(BufWriter::with_capacity(BUFF_SIZE, fp)))
         }
     } else if stdout_format == 'g' {
@@ -196,15 +195,18 @@ where
         )))
     } else if stdout_format == 'z' {
         Ok(Box::new(BufWriter::with_capacity(
-                BUFF_SIZE,
-                zstd::stream::write::Encoder::new(io::stdout(), match compression_level {
-                1 => 1,
-                2 => 3,
-                3 => 7,
-                4 => 11,
-                _ => 3
-            })?,
-            )))
+            BUFF_SIZE,
+            zstd::stream::write::Encoder::new(
+                io::stdout(),
+                match compression_level {
+                    1 => 1,
+                    2 => 3,
+                    3 => 7,
+                    4 => 11,
+                    _ => 3,
+                },
+            )?,
+        )))
     } else if stdout_format == 'u' {
         Ok(Box::new(BufWriter::new(io::stdout())))
     } else {
@@ -245,18 +247,22 @@ where
             BUFF_SIZE,
             xz2::write::XzEncoder::new(fp, compression_level),
         )))
-    } else if file_out.as_ref().extension().is_some_and(|ext| ext == "zst") {
+    } else if file_out
+        .as_ref()
+        .extension()
+        .is_some_and(|ext| ext == "zst")
+    {
         let level = match compression_level {
-                1 => 1,
-                2 => 3,
-                3 => 7,
-                4 => 11,
-                _ => 3
-            };
-            Ok(Box::new(BufWriter::with_capacity(
-                BUFF_SIZE,
-                zstd::stream::write::Encoder::new(fp, level)?,
-            )))
+            1 => 1,
+            2 => 3,
+            3 => 7,
+            4 => 11,
+            _ => 3,
+        };
+        Ok(Box::new(BufWriter::with_capacity(
+            BUFF_SIZE,
+            zstd::stream::write::Encoder::new(fp, level)?,
+        )))
     } else {
         Ok(Box::new(BufWriter::with_capacity(BUFF_SIZE, fp)))
     }

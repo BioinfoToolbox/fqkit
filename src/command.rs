@@ -139,9 +139,9 @@ pub enum Subcli {
         /// subseq number
         #[arg(short = 'n', long = "num", value_name = "INT")]
         num: usize,
-        /// read files twice to reduce much memory but cost more time
-        #[arg(short = 'r', long = "rdc", help_heading = Some("FLAGS"))]
-        rdc: bool,
+        /// if specified, use two-pass mode to reduce memory usage
+        #[arg(short = '2', long = "two-pass", help_heading = Some("FLAGS"))]
+        two_pass: bool,
         /// fastq output file name or write to stdout, files ending in .gz/.bz2/.xz will be compressed automatically
         #[arg(short = 'o', long = "out", value_name = "FILE")]
         out: Option<String>,

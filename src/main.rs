@@ -62,14 +62,14 @@ fn run_main() -> Result<(), Error> {
             input,
             seed,
             num,
-            rdc,
+            two_pass,
             out,
         } => {
-            subset_fastq(
-                rdc,
+            sample_fastq(
                 input.as_ref(),
                 num,
                 seed,
+                two_pass,
                 out.as_ref(),
                 arg.compression_level,
                 arg.stdout_type,
