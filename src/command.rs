@@ -39,7 +39,7 @@ Compression level:
   zstd     1-4     2         roughly equals to zstd 1, 3, 7, 11, respectively"
 )]
 #[command(help_template = "{name} -- {about}\n\nVersion: {version}\
-    \n\nAuthors: {author} <mmtinfo@163.com>\
+    \n\nAuthors: {author}\
     \nSource code: https://github.com/sharkLoc/fqkit.git\
     \n\n{before-help}
 {usage-heading} {usage}\n\n{all-args}\n\nUse \"fqkit help [command]\" for more information about a command")]

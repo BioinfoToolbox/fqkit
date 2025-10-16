@@ -43,9 +43,9 @@ cargo install --git https://github.com/sharkLoc/fqkit.git
 ```bash
 FqKit -- A simple and cross-platform program for fastq file manipulation
 
-Version: 0.4.14
+Version: 0.4.15
 
-Authors: sharkLoc <mmtinfo@163.com> <mmtinfo@163.com>
+Authors: sharkLoc <mmtinfo@163.com>
 Source code: https://github.com/sharkLoc/fqkit.git
 
 Fqkit supports reading and writing gzip (.gz) format.
